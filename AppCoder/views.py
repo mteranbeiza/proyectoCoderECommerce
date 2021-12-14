@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from AppCoder.models import Suscriptor
-from AppCoder.forms import Suscriptores_Formulario
+from AppCoder.models import Producto, Suscriptor
+from AppCoder.forms import Suscriptores_Formulario, Productos_Formulario
 
 # Create your views here.
 
@@ -10,6 +10,19 @@ def inicio(request):
 
 def productos(request):
     return render(request, 'AppCoder/productos.html')
+
+def productos_formulario(request):
+    if request.method == "POST":
+        productos_formulario= Productos_Formulario(request.POST)
+        if productos_formulario.is_valid():
+            informacion= productos_formulario.cleaned_data
+            producto_instanciado= Producto(idProducto=informacion["idProducto"],nombre= informacion["nombre"],precio= informacion["precio"])
+            producto_instanciado.save()
+        return render(request, 'AppCoder/inicio.html')
+    
+    else:
+        productos_formulario= Productos_Formulario
+    return render(request, 'AppCoder/productos_formulario.html', {"productos_formulario":productos_formulario})
 
 def suscriptores(request):
     return render(request, 'AppCoder/suscriptores.html')
