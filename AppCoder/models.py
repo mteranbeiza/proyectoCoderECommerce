@@ -2,21 +2,23 @@ from django.db import models
 
 # Create your models here.
 
-class Producto(models.Model):
-    idProducto = models.IntegerField()
-    nombre = models.CharField(max_length=40)
-    precio = models.FloatField()
+class Producto(models.Model):    
+    nombre    = models.CharField(max_length=40)
+    precio    = models.FloatField()
+    categoria = models.CharField(max_length=40)
 
     def __str__(self):
-        return f"IdProducto: {self.idProducto} Nombre: {self.nombre} Precio: {self.precio}"
+        return f"Nombre: {self.nombre} Email: {self.mail}  Categoria: {self.categoria}"
 
+   
 class Suscriptor(models.Model):
     nombre = models.CharField(max_length=40)
-    mail = models.CharField(max_length=40)
-    telefono = models.IntegerField()
+    mail = models.EmailField(max_length=140)  
 
     def __str__(self):
-        return f"Nombre: {self.nombre} Mail: {self.mail} Telefono: {self.telefono}"
+        return f"Nombre: {self.nombre} Email: {self.mail}"
+   
+    
 
 
 class PuntoDeVenta(models.Model):
