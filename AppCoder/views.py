@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from AppCoder.models import Producto, Suscriptor
-from AppCoder.forms import Suscriptores_Formulario, Productos_Formulario
+from AppCoder.models import Producto, Suscriptor, PuntoDeVenta
+from AppCoder.forms import Suscriptores_Formulario, Productos_Formulario, Puntosdeventa_Formulario 
 
 # Create your views here.
 
@@ -43,3 +43,18 @@ def suscriptores_formulario(request):
 
 def puntosdeventa(request):
     return render(request, 'AppCoder/puntosdeventa.html')
+
+
+def puntosdeventa_formulario(request):
+    if request.method == "POST":
+        puntosdeventa_formulario= Puntosdeventa_Formulario(request.POST)
+        if puntosdeventa_formulario.is_valid():
+            informacion= puntosdeventa_formulario.cleaned_data
+            puntodeventa_instanciado= PuntoDeVenta(nombre=informacion["nombre"],mail= informacion["mail"],barrio= informacion["barrio"])
+            puntodeventa_instanciado.save()
+        return render(request, 'AppCoder/inicio.html')
+
+    else:
+        puntosdeventa_formulario= Puntosdeventa_Formulario
+
+    return render(request, 'AppCoder/puntosdeventa_formulario.html', {"puntosdeventa_formulario":puntosdeventa_formulario})

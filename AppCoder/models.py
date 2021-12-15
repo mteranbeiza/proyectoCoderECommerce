@@ -22,10 +22,10 @@ class Suscriptor(models.Model):
 
 
 class PuntoDeVenta(models.Model):
-    sucursal = models.CharField(max_length=40)
-    calle = models.CharField(max_length=40)
-    calle = models.IntegerField()
+    nombre = models.CharField(max_length=50, default="", editable=False)
+    mail = models.CharField(max_length=40)
+    barrio = models.CharField(max_length=40)
 
     def __str__(self):
-        return f"Sucursal: {self.sucursal} Calle: {self.calle} Numero: {self.calle}"
+        return f"Nombre: {self.nombre} Mail: {self.mail} Barrio: {self.barrio}"
 
