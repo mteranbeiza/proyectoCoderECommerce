@@ -15,19 +15,24 @@
             </div>
         </div>
         
-        <!-- product -->
+       
+        
+       
+        {% for producto in object_list %}
+
+           <!-- product -->
         <div class="col-md-3 col-xs-6">
             <div class="product">
                 <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product01.png' %}" alt="">
-                    <div class="product-label">
+                    <img src="/media/{{ producto.imagen }}" alt=""><!-- {% static 'AppCoder/img/product01.png' %} -->
+                    <!-- <div class="product-label">
                         <span class="sale">-30%</span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                    <p class="product-category">{{ producto.categoria }}</p>
+                    <h3 class="product-name">{{ producto.nombre }}</h3>
+                    <h4 class="product-price">$ {{ producto.precio }} </h4>
                     <div class="product-rating">
                     </div>
                    
@@ -38,182 +43,10 @@
             </div>
         </div>
         <!-- /product -->
+
+        {% endfor %}
+       
         
-        <!-- product -->
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product02.png' %}" alt="">
-                    <div class="product-label">
-                        <span class="new">NEW</span>
-                    </div>
-                </div>
-                <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    <div class="product-rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                   
-                </div>
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar carrito</button>
-                </div>
-            </div>
-        </div>
-        <!-- /product -->
-        
-        <div class="clearfix visible-sm visible-xs"></div>
-        
-        <!-- product -->
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product03.png' %}" alt="">
-                </div>
-                <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    <div class="product-rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                  
-                </div>
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Agregar carrito</button>
-                </div>
-            </div>
-        </div>
-        <!-- /product -->
-        
-        <!-- product -->
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product04.png' %}" alt="">
-                </div>
-                <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    <div class="product-rating">
-                    </div>
-                    
-                </div>
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar carrito</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product05.png' %}" alt="">
-                    <div class="product-label">
-                        <span class="sale">-30%</span>
-                    </div>
-                </div>
-                <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    <div class="product-rating">
-                    </div>
-                    
-                </div>
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar carrito</button>
-                </div>
-            </div>
-        </div>
-        <!-- /product -->
-        
-        <!-- product -->
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product06.png' %}" alt="">
-                    <div class="product-label">
-                        <span class="new">NEW</span>
-                    </div>
-                </div>
-                <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    <div class="product-rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                  
-                </div>
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar carrito</button>
-                </div>
-            </div>
-        </div>
-        <!-- /product -->
-        
-        <div class="clearfix visible-sm visible-xs"></div>
-        
-        <!-- product -->
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product07.png' %}" alt="">
-                </div>
-                <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    <div class="product-rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                   
-                </div>
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar carrito</button>
-                </div>
-            </div>
-        </div>
-        <!-- /product -->
-        
-        <!-- product -->
-        <div class="col-md-3 col-xs-6">
-            <div class="product">
-                <div class="product-img">
-                    <img src="{% static 'AppCoder/img/product08.png' %}" alt="">
-                </div>
-                <div class="product-body">
-                    <p class="product-category">Category</p>
-                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                    <div class="product-rating">
-                    </div>
-                   
-                </div>
-                <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar carrito</button>
-                </div>
-            </div>
-        </div>
        
        
        

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import Producto, Suscriptor, PuntoDeVenta
 from AppCoder.forms import Suscriptores_Formulario, Productos_Formulario, Puntosdeventa_Formulario 
-
+from django.views.generic import ListView
 # Create your views here.
 
 def inicio(request):
@@ -58,3 +58,8 @@ def puntosdeventa_formulario(request):
         puntosdeventa_formulario= Puntosdeventa_Formulario
 
     return render(request, 'AppCoder/puntosdeventa_formulario.html', {"puntosdeventa_formulario":puntosdeventa_formulario})
+
+
+class ProductosList(ListView):
+    model = Producto
+    template_name = 'AppCoder/productos.html'    
