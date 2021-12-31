@@ -1,0 +1,21 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static%}
+
+{% block contenido2%}
+ <P> Aca podes encontrar todos nuestros puntos de venta: </P>
+<ul>
+    {% for puntosdeventa in object_list %}
+    <li>
+        <p>NOMBRE: {{ puntosdeventa.nombre }}</p>
+        <p>
+            <a href="{% url 'Detail' puntosdeventa.id %}"> Ver mas</a>
+            <a href="{% url 'Edit' puntosdeventa.id %}"> Editar</a>
+            <a href="{% url 'Delete' puntosdeventa.id %}"> Borrar</a>
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+
+   
+{% endblock %}

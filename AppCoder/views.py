@@ -3,11 +3,14 @@ from django.http import HttpResponse
 from AppCoder.models import Producto, Suscriptor, PuntoDeVenta
 from AppCoder.forms import Suscriptores_Formulario, Productos_Formulario, Puntosdeventa_Formulario 
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
 def inicio(request):
     return render(request, 'AppCoder/inicio.html')
 
+#PRODUCTOS
 def productos(request):
     return render(request, 'AppCoder/productos.html')
 
@@ -24,8 +27,15 @@ def productos_formulario(request):
         productos_formulario= Productos_Formulario
     return render(request, 'AppCoder/productos_formulario.html', {"productos_formulario":productos_formulario})
 
-
-
+def descripcion(request,id):
+    producto = Producto.objects.get(pk=id)
+    return render(request, 'AppCoder/descripcion.html',{'producto':producto})
+    
+class ProductosList(ListView):
+    model = Producto
+    template_name = 'AppCoder/productos.html'   
+ 
+#SUSCRIPTORES
 def suscriptores_formulario(request):
     if request.method == "POST":
         suscriptores_formulario= Suscriptores_Formulario(request.POST)
@@ -40,7 +50,7 @@ def suscriptores_formulario(request):
 
     return render(request, 'AppCoder/suscriptores_formulario.html', {"suscriptores_formulario":suscriptores_formulario})
 
-
+#PUNTOS DE VENTA
 def puntosdeventa(request):
     return render(request, 'AppCoder/puntosdeventa.html')
 
@@ -59,10 +69,24 @@ def puntosdeventa_formulario(request):
 
     return render(request, 'AppCoder/puntosdeventa_formulario.html', {"puntosdeventa_formulario":puntosdeventa_formulario})
 
-def descripcion(request,id):
-    producto = Producto.objects.get(pk=id)
-    return render(request, 'AppCoder/descripcion.html',{'producto':producto})
-    
-class ProductosList(ListView):
-    model = Producto
-    template_name = 'AppCoder/productos.html'    
+class PuntosdeventaList(ListView):
+    model = PuntoDeVenta
+    template_name = 'AppCoder/puntosdeventa_list.html'
+
+class PuntosdeventaDetalle(DetailView):
+    model = PuntoDeVenta
+    template_name = 'AppCoder/puntosdeventa_detalle.html' 
+
+class PuntosdeventaCrear(CreateView):
+    model = PuntoDeVenta
+    sucess_url= '../puntosdeventa_list'  
+    fields= ["nombre", "mail", "barrio"]
+
+class PuntosdeventaUpdate(UpdateView):
+    model = PuntoDeVenta
+    sucess_url= '../puntosdeventa_list'  
+    fields= ["nombre", "mail", "barrio"]
+
+class PuntosdeventaDelete(DeleteView):
+    model = PuntoDeVenta
+    sucess_url= '../puntosdeventa_list' 
