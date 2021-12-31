@@ -59,7 +59,10 @@ def puntosdeventa_formulario(request):
 
     return render(request, 'AppCoder/puntosdeventa_formulario.html', {"puntosdeventa_formulario":puntosdeventa_formulario})
 
-
+def descripcion(request,id):
+    producto = Producto.objects.get(pk=id)
+    return render(request, 'AppCoder/descripcion.html',{'producto':producto})
+    
 class ProductosList(ListView):
     model = Producto
     template_name = 'AppCoder/productos.html'    

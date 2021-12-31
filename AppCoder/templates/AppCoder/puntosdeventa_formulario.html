@@ -15,11 +15,11 @@
                 
                     <form action="/AppCoder/puntosdeventa_formulario" method= "POST">{% csrf_token %}
 
-                        <table>
+                        <table class="table">
                         {{ puntosdeventa_formulario.as_table }}
                         </table>
                     
-                    <input type="submit" name="PUNTOS DE VENTA"> 
+                    <input type="submit" name="PUNTOS DE VENTA" class="btn btn-danger"> 
                     
                     </form>
                     <ul class="newsletter-follow">

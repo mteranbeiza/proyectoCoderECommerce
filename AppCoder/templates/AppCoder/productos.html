@@ -38,22 +38,19 @@
                    
                 </div>
                 <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar  Carrito</button>
+                    <a href="{% url 'Descripcion' producto.id %}"><button  class="add-to-cart-btn p-2"><i class="fa fa-eye"></i>Ver Más</button></a>
                 </div>
             </div>
         </div>
         <!-- /product -->
 
-        {% endfor %}
-       
-        
-       
+        {% endfor %}    
        
        
     </div>
 </div><br><br>
 
-	
+
 
  
   

@@ -9,4 +9,5 @@ urlpatterns = [
     path('puntosdeventa', views.puntosdeventa, name= 'PuntosDeVenta'),
     path('puntosdeventa_formulario', views.puntosdeventa_formulario, name= 'Puntosdeventa_Formulario'),
     path('productos', views.ProductosList.as_view(), name= 'Productos'),
+    path('descripcion/<id>', views.descripcion, name= 'Descripcion'),
 ]
