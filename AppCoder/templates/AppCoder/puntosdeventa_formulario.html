@@ -13,7 +13,7 @@
                 <div class="newsletter">
                     <p>Puntos de venta  <strong>ELECTRO.</strong>-Ingrese la informacion para que se le comunique via Email el o los puntos de venta dentro de su barrio </p>
                 
-                    <form action="/AppCoder/puntosdeventa_formulario" method= "POST">{% csrf_token %}
+                    <form action="/puntosdeventa_formulario" method= "POST">{% csrf_token %}
 
                         <table class="table">
                         {{ puntosdeventa_formulario.as_table }}

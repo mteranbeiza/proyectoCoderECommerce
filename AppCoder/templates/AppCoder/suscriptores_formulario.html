@@ -13,7 +13,7 @@
                 <div class="newsletter">
                     <p>Suscribete a <strong>ELECTRO.</strong> y recibiras todas nuestras promociones</p>
                 
-                    <form action="/AppCoder/suscriptores_formulario" method= "POST">{% csrf_token %}
+                    <form action="/suscriptores_formulario" method= "POST">{% csrf_token %}
 
                         <table class="table">
                         {{ suscriptores_formulario.as_table }}

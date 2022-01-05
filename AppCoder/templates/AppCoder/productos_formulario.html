@@ -13,7 +13,7 @@
                 <div class="newsletter">
                     <p>Productos <strong>ELECTRO.</strong>- Ingresa información sobre el producto que estas buscando!</p>
                 
-                    <form action="/AppCoder/productos_formulario" method= "POST">{% csrf_token %}
+                    <form action="/productos_formulario" method= "POST">{% csrf_token %}
 
                         <table class="table">
                         {{ productos_formulario.as_table }}
