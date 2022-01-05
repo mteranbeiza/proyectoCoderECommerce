@@ -67,7 +67,7 @@ def puntosdeventa_formulario(request):
     else:
         puntosdeventa_formulario= Puntosdeventa_Formulario
 
-    return render(request, 'AppCoder/puntosdeventa_formulario.html', {"puntosdeventa_formulario":puntosdeventa_formulario})
+    return render(request, 'AppCoder/puntodeventa_form.html', {"puntosdeventa_formulario":puntosdeventa_formulario})
 
 class PuntosdeventaList(ListView):
     model = PuntoDeVenta
@@ -85,8 +85,8 @@ class PuntosdeventaCrear(CreateView):
 class PuntosdeventaUpdate(UpdateView):
     model = PuntoDeVenta
     sucess_url= '../puntosdeventa_list'  
-    fields= ["nombre", "mail", "barrio"]
+    fields= ["mail", "barrio"]
 
 class PuntosdeventaDelete(DeleteView):
     model = PuntoDeVenta
-    sucess_url= '../puntosdeventa_list' 
+    sucess_url ='../puntosdeventa_list' 
