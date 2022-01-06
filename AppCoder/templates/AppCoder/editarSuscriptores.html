@@ -1,0 +1,37 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+        {% block contenido2 %}
+            <h1 class="mb-1">Formulario de Suscriptor</h1>
+        {% endblock %}
+
+
+
+
+        {% block contenido %}
+
+
+            
+
+
+            <form action="/AppCoder/editarSuscriptores" method="POST">{% csrf_token %}
+
+                <p>Direccion: <input type="text"  name="direccion">    </p>
+
+                <p>Año: <input type="number"  name="anioFund">    </p>
+
+                
+                
+                <table>
+
+                {{  miFormulario.as_table    }}
+
+                </table>
+
+                <input type="submit" value="Editar">
+            </form>
+
+         
+
+        {% endblock %}

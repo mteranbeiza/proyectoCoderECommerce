@@ -50,6 +50,43 @@ def suscriptores_formulario(request):
 
     return render(request, 'AppCoder/suscriptores_formulario.html', {"suscriptores_formulario":suscriptores_formulario})
 
+
+def leerSuscriptores(request):
+    suscriptores = Suscriptor.objects.all()
+    dicc=  {"suscriptores":suscriptores}
+    return render(request, "Appcoder/leerSuscriptores.html", dicc)
+
+def borrarSuscriptores(request, suscriptor_nombre):
+
+    suscriptorBorrar = Suscriptor.objects.get(nombre= suscriptor_nombre)
+    suscriptorBorrar.delete()
+
+    suscriptores= Suscriptor.objects.all()
+    return render(request, "AppCoder/leerSuscriptores.html", {"suscriptores":suscriptores} )
+
+def editarSuscriptores(request, editar_nombre):
+    suscriptor=Suscriptor.objects.get(nombre=editar_nombre)
+    
+    
+    if request.method == "POST":
+        miFormulario=Suscriptores_Formulario(request.POST)
+        if miFormulario.is_valid():
+            informacion= miFormulario.cleaned_data
+        
+            suscriptor.nombre = informacion["nombre"],
+            suscriptor.mail= informacion["mail"],
+            
+            suscriptor.save()           
+        
+        
+        return render(request, 'AppCoder/inicio.html')
+    
+    else:
+        miFormulario= Suscriptores_Formulario(initial={"nombre":suscriptor.nombre, "mail":suscriptor.mail})
+
+    return render(request, 'AppCoder/editarSuscriptores.html', {"miFormulario":miFormulario, "editar_nombre":editar_nombre} )
+
+
 #PUNTOS DE VENTA
 def puntosdeventa(request):
     return render(request, 'AppCoder/puntosdeventa.html')

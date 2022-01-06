@@ -1,0 +1,19 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static%}
+
+{% block contenido2%}
+ <P> Aca podes encontrar todos nuestros suscriptores: </P>
+<ul>
+    {% for s in suscriptores %}
+    <li> {{s}} </li>
+    <button>
+        <a href="{% url 'BorrarSuscriptores' s.nombre %}"> Borrar</a>
+        <a href="{% url 'EditarSuscriptores' s.nombre %}"> Editar</a>
+    </button>
+
+    {% endfor %}
+</ul>
+<a href="{% url 'Suscriptores_Formulario' %}"> Agregar otro Suscriptor</a>
+   
+{% endblock %}
