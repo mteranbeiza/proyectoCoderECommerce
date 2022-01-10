@@ -2,26 +2,12 @@
 
 {% load static %}
 
-        {% block contenido2 %}
-            <h1 class="mb-1">Formulario de Suscriptor</h1>
-        {% endblock %}
-
-
-
-
-        {% block contenido %}
-
-
+{% block contenido2 %}
+<h1 class="mb-1">Formulario de Suscriptor</h1>
             
-
-
-            <form action="/AppCoder/editarSuscriptores" method="POST">{% csrf_token %}
-
-                <p>Direccion: <input type="text"  name="direccion">    </p>
-
-                <p>Año: <input type="number"  name="anioFund">    </p>
-
+            <form action="" method="POST">
                 
+                {% csrf_token %}
                 
                 <table>
 
@@ -34,4 +20,4 @@
 
          
 
-        {% endblock %}
+{% endblock %}

@@ -41,7 +41,7 @@ def suscriptores_formulario(request):
         suscriptores_formulario= Suscriptores_Formulario(request.POST)
         if suscriptores_formulario.is_valid():
             informacion= suscriptores_formulario.cleaned_data
-            suscriptor_instanciado= Suscriptor(nombre=informacion["nombre"],mail= informacion["email"])
+            suscriptor_instanciado= Suscriptor(nombre=informacion["nombre"],mail= informacion["mail"])
             suscriptor_instanciado.save()
         return render(request, 'AppCoder/inicio.html')
     
@@ -73,8 +73,8 @@ def editarSuscriptores(request, editar_nombre):
         if miFormulario.is_valid():
             informacion= miFormulario.cleaned_data
         
-            suscriptor.nombre = informacion["nombre"],
-            suscriptor.mail= informacion["mail"],
+            suscriptor.nombre = informacion["nombre"]
+            suscriptor.mail= informacion["mail"]
             
             suscriptor.save()           
         
