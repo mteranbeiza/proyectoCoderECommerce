@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import Producto, Suscriptor, PuntoDeVenta
-from AppCoder.forms import Suscriptores_Formulario, Productos_Formulario, Puntosdeventa_Formulario 
+from AppCoder.forms import Suscriptores_Formulario, Productos_Formulario, Puntosdeventa_Formulario, UserRegisterForm, UserEditForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -127,3 +127,83 @@ class PuntosdeventaUpdate(UpdateView):
 class PuntosdeventaDelete(DeleteView):
     model = PuntoDeVenta
     sucess_url ='../puntosdeventa_list' 
+
+#LOGIN
+
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+
+
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data= request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
+
+            user = authenticate(username=usuario, password= contra)
+
+            if user is not None:
+                login(request,user)
+                return render(request, "AppCoder/inicio.html",{"mensaje":f"Hola,{usuario}!"})
+            else:
+                return render(request, "AppCoder/inicio.html",{"mensaje":"Datos erróneos"})
+        else:
+            return render(request, "AppCoder/inicio.html",{"mensaje":"Formulario erróneo"})
+
+    form = AuthenticationForm()
+    return render (request,"AppCoder/login.html",{"form":form})
+
+
+def register(request):
+
+      if request.method == 'POST':
+      
+            form = UserRegisterForm(request.POST)
+            
+            if form.is_valid():
+
+                  username = form.cleaned_data['username']
+                  
+                  form.save()
+                  
+                  return render(request,"AppCoder/inicio.html" ,  {"mensaje":f"El usuario: {username}, fue creado."})
+
+
+      else:
+
+            form = UserRegisterForm()     
+
+      return render(request,"AppCoder/register.html" ,  {"form":form})
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def editarPerfil(request):
+    
+    
+    usuario = request.user
+    
+    if request.method == 'POST':
+        
+        miFormulario = UserEditForm(request.POST)
+        
+        if miFormulario.is_valid():
+            
+            informacion = miFormulario.cleaned_data
+            
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            
+            usuario.save()
+            
+            return render(request, "AppCoder/inicio.html")
+        
+    else:
+        
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+        
+        
+    return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
