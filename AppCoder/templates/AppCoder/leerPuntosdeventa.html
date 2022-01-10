@@ -1,0 +1,19 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static%}
+
+{% block contenido2%}
+ <P> Aca podes encontrar todos nuestros puntos de venta: </P>
+<ul>
+    {% for p in puntosdeventa %}
+    <li> {{p}} </li>
+    <button>
+        <a href="{% url 'BorrarPuntosdeventa' p.nombre %}"> Borrar</a>
+        <a href="{% url 'EditarPuntosdeventa' p.nombre %}"> Editar</a>
+    </button>
+
+    {% endfor %}
+</ul>
+<a href="{% url 'Puntosdeventa_Formulario' %}"> Agregar otro punto de venta</a>
+   
+{% endblock %}

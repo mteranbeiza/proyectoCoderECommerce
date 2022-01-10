@@ -104,30 +104,45 @@ def puntosdeventa_formulario(request):
     else:
         puntosdeventa_formulario= Puntosdeventa_Formulario
 
-    return render(request, 'AppCoder/puntodeventa_form.html', {"puntosdeventa_formulario":puntosdeventa_formulario})
+    return render(request, 'AppCoder/puntosdeventa_formulario.html', {"puntosdeventa_formulario":puntosdeventa_formulario})
 
-class PuntosdeventaList(ListView):
-    model = PuntoDeVenta
-    template_name = 'AppCoder/puntosdeventa_list.html'
+def leerPuntosdeventa(request):
+    
+    puntosdeventa = PuntoDeVenta.objects.all()
+    
+    dir = {"puntosdeventa": puntosdeventa} 
+    
+    return render(request, "AppCoder/leerPuntosdeventa.html", dir)
 
-class PuntosdeventaDetalle(DetailView):
-    model = PuntoDeVenta
-    template_name = 'AppCoder/puntosdeventa_detalle.html' 
+def borrarPuntosdeventa(request, puntodeventa_nombre):
 
-class PuntosdeventaCrear(CreateView):
-    model = PuntoDeVenta
-    sucess_url= '../puntosdeventa_list'  
-    fields= ["nombre", "mail", "barrio"]
+    puntodeventaBorrar = PuntoDeVenta.objects.get(nombre= puntodeventa_nombre)
+    puntodeventaBorrar.delete()
 
-class PuntosdeventaUpdate(UpdateView):
-    model = PuntoDeVenta
-    sucess_url= '../puntosdeventa_list'  
-    fields= ["mail", "barrio"]
+    puntosdeventa= PuntoDeVenta.objects.all()
+    return render(request, "AppCoder/leerPuntosdeventa.html", {"puntosdeventa": puntosdeventa} )
 
-class PuntosdeventaDelete(DeleteView):
-    model = PuntoDeVenta
-    sucess_url ='../puntosdeventa_list' 
+def editarPuntosdeventa(request, editar_nombre):
+    puntodeventa= PuntoDeVenta.objects.get(nombre=editar_nombre)
+    
+    if request.method == "POST":
+        miFormulario=Puntosdeventa_Formulario(request.POST)
+        if miFormulario.is_valid():
+            informacion= miFormulario.cleaned_data
+        
+            puntodeventa.nombre = informacion["nombre"]
+            puntodeventa.mail= informacion["mail"]
+            puntodeventa.barrio= informacion["barrio"]
+            
+            puntodeventa.save()           
+        return render(request, 'AppCoder/inicio.html')
+    
+    else:
+        miFormulario= Puntosdeventa_Formulario(initial={"nombre":puntodeventa.nombre, "mail":puntodeventa.mail, "barrio":puntodeventa.barrio})
 
+    return render(request, 'AppCoder/editarPuntosdeventa.html', {"miFormulario":miFormulario, "editar_nombre":editar_nombre} )
+      
+ 
 #LOGIN
 
 from django.contrib.auth.forms import AuthenticationForm
