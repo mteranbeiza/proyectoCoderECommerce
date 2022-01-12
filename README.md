@@ -1,1 +1,9 @@
 # proyectoCoderECommerce
+
+Maria Paz Oliva: Para la primera entrega hice el formulario de suscriptores y el de productos. Para la segunda entrega hice el CRUD de puntos de venta (lo tuve que hacer dos veces, la primera vez con clases basadas en vistas y como no funcionó dsp lo hice de la forma tradicional).
+
+Manuel Jorda: En la creación de la página web me encargué de hacer el formulario de puntos de venta (la gente envía su mail para que se le envíe la Info de los puntos de venta). También hice el CRUD de suscriptores el cual fue bastante más complicado de lo que en un momento pensé pero al final logré hacer todo bien. Por último, además de agregar errores generales y pequeños detalles hice el Excel con los 3 casos de prueba.
+
+María Victoria Terán Beiza: Me encargué de realizar la estructura base de la página con el template elegido por el equipo, cree los modelos y las vistas del E commerce. Además, hice el CRUD del logueo, que permite l loguearse, desloguearse, registrar un nuevo usuario y modificar un usuario ya creado (para poder hacerlo se requiere previamente el logueo del usuario).
+
+Marcelo Long: Se mejoró el html de las vistas, eliminación de un template de suscriptores, cambios en modelos suscriptores y productos, sus forms y  views, lee los productos de la base de datos con sus respectivas imágenes, personalización del admin, muestra en columnas los atributos con  su imagen, se agregó archivo requerimiento.txt - Se cambió botón en productos x Ver Mas donde te lleva a la template de descripción, cambio en action de form de suscriptores y puntos de ventas, se sacó el Appcoder.

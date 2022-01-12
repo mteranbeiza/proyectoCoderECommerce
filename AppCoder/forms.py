@@ -30,11 +30,11 @@ class UserRegisterForm(UserCreationForm):
     password1= forms.CharField(label = 'Contraseña', widget = forms.PasswordInput)
     password2= forms.CharField(label = 'Repetir contraseña', widget = forms.PasswordInput)
 
-    imagen_avatar = forms.ImageField(required=False)
+    #imagen_avatar = forms.ImageField(required=False)
 
 class Meta:
     model = User
-    fields = ['first_name','last_name','username','email','password1','password2','imagen_avatar']
+    fields = ['first_name','last_name','username','email','password1','password2']
     help_texts = {k: "" for k in fields}
 
 class UserEditForm(UserCreationForm):
@@ -47,7 +47,7 @@ class UserEditForm(UserCreationForm):
     password1= forms.CharField(label = 'Contraseña', widget = forms.PasswordInput)
     password2= forms.CharField(label = 'Repetir contraseña', widget = forms.PasswordInput)
 
-    imagen_avatar = forms.ImageField(required=False)
+    #imagen_avatar = forms.ImageField(required=False)
 
 
     

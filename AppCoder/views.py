@@ -222,3 +222,6 @@ def editarPerfil(request):
         
         
     return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+
+def sobreNosotros(request):
+    return render(request, 'AppCoder/sobreNosotros.html')
